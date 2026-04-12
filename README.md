@@ -1,14 +1,20 @@
-This project demonstrates basic camera operation using the OpenCV library in Python.
-The program captures a stream from the camera, converts the image to grayscale, and displays it in a separate window.
+This project demonstrates a basic motion detection system using the popular Python computer vision library — OpenCV.
 
- **How the code works**
+The program works by detecting differences between video frames and identifying areas of movement.
 
-1. The camera is connected at index 1 (can be changed to 0 if the main camera).
+### Pipeline:
+Frame difference → Grayscale conversion → Noise reduction (blur) → Thresholding (binary image) → Morphological dilation → Contour detection → Motion filtering → Result display
 
-2. Frames are captured in an infinite loop.
+---
 
-3.  Each frame is converted to grayscale using cv2.cvtColor.
+## How it works:
 
-4.  The result is displayed in the window The picture.
-
-5. To exit the program, press the p key.
+1. The camera captures two consecutive frames (frame1 and frame2).
+2. While the camera is running, the program calculates the difference between these two frames.
+3. The difference is converted to a grayscale image.
+4. A Gaussian blur is applied to reduce noise and improve detection accuracy.
+5. Thresholding converts the image into a binary (black and white) format.
+6. Dilation is applied to enlarge detected motion areas.
+7. Contours are extracted to find the coordinates of moving objects.
+8. Small movements (area < 1000) are ignored as noise.
+9. Significant movements are highlighted with bounding boxes and displayed on the screen.
