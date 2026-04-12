@@ -1,8 +1,8 @@
 import cv2
 cam = cv2.VideoCapture(0)
 #frames to find the difference
-rem1, frame1 = cam.read()
-rem1, frame2 = cam.read()
+ret, frame1 = cam.read()
+ret, frame2 = cam.read()
 while cam.isOpened():
     #difference between the frames
     diff = cv2.absdiff(frame1, frame2)
@@ -16,16 +16,16 @@ while cam.isOpened():
     dilated = cv2.dilate(thresh, None, iterations=3)
     # find the motion
     contours, _ = cv2.findContours(dilated, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-    for contours in contours:
+    for contour in contours:
     # ignore the little motion
-    if cv2.contourArea(contour) < 1000:
+      if cv2.contourArea(contour) < 1000:
             continue
-    #show the window
-    x, y, w, h = cv2.boundingRect(contour)
-    cv2.rectangle(frame1, (x, y), (x+w, y+h), (0, 255, 0), 2)
+      #show the window
+      x, y, w, h = cv2.boundingRect(contour)
+      cv2.rectangle(frame1, (x, y), (x+w, y+h), (0, 255, 0), 2)
         
-    # red text
-    cv2.putText(frame1, "Movement detected", (10, 20),
+      # red text
+      cv2.putText(frame1, "Movement detected", (10, 20),
                     cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
     cv2.imshow("Motion Detection", frame1)
 
@@ -35,7 +35,7 @@ while cam.isOpened():
 
       #press "ESP" to exit
     if cv2.waitKey(40) == 27:
-      break
+        break
 
 cam.release()
 cv2.destroyAllWindows()
