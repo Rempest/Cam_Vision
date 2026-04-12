@@ -3,7 +3,7 @@ cam = cv2.VideoCapture(0)
 #frames to find the difference
 frame1, rem1 = cam.read()
 frame2, rem2 = cam.read()
-while cam.isOpen():
+while cam.isOpened():
     #difference between the frames
     diff = cv2.absdiff(frame1, frame2)
     # Convert to gray
