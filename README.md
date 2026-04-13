@@ -37,10 +37,9 @@ The system detects motion using the following steps:
 9. Draw bounding boxes around detected motion  
 
 ---
-
 ## 📦 Requirements
 
-Install OpenCV:
+Install dependencies using:
 
 ```bash
-pip install opencv-python
+pip install -r requirements.txt
