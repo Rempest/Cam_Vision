@@ -1,20 +1,46 @@
-This project demonstrates a basic motion detection system using the popular Python computer vision library — OpenCV.
+# Motion Detection using OpenCV 🎥
 
-The program works by detecting differences between video frames and identifying areas of movement.
-
-### Pipeline:
-Frame difference → Grayscale conversion → Noise reduction (blur) → Thresholding (binary image) → Morphological dilation → Contour detection → Motion filtering → Result display
+This project demonstrates a basic motion detection system using the popular Python computer vision library — OpenCV.  
+The program works by detecting differences between consecutive video frames and identifying areas of movement in real time.
 
 ---
 
-## How it works:
+## 🧠 Pipeline
 
-1. The camera captures two consecutive frames (frame1 and frame2).
-2. While the camera is running, the program calculates the difference between these two frames.
-3. The difference is converted to a grayscale image.
-4. A Gaussian blur is applied to reduce noise and improve detection accuracy.
-5. Thresholding converts the image into a binary (black and white) format.
-6. Dilation is applied to enlarge detected motion areas.
-7. Contours are extracted to find the coordinates of moving objects.
-8. Small movements (area < 1000) are ignored as noise.
-9. Significant movements are highlighted with bounding boxes and displayed on the screen.
+Frame difference → Grayscale conversion → Noise reduction (Gaussian blur) → Thresholding (binary image) → Morphological dilation → Contour detection → Motion filtering → Result display
+
+---
+
+## 🚀 Features
+
+- Real-time webcam video processing
+- Motion detection using frame differencing
+- Noise reduction with Gaussian blur
+- Contour detection for moving objects
+- Bounding boxes around detected motion
+- Lightweight and fast algorithm
+
+---
+
+## 🧠 How It Works
+
+The system detects motion using the following steps:
+
+1. Capture two consecutive frames from the webcam  
+2. Compute the absolute difference between frames  
+3. Convert the result to grayscale  
+4. Apply Gaussian blur to reduce noise  
+5. Apply thresholding to create a binary image  
+6. Dilate the image to strengthen motion regions  
+7. Detect contours of moving objects  
+8. Filter out small noise-based movements  
+9. Draw bounding boxes around detected motion  
+
+---
+
+## 📦 Requirements
+
+Install OpenCV:
+
+```bash
+pip install opencv-python
